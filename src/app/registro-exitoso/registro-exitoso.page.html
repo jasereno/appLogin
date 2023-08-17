@@ -1,0 +1,24 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="['/login']" default-href="#"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>
+        <h1>Se ha registrado con exito!</h1>
+      </ion-card-title>
+    </ion-card-header>
+  <ion-card-content>
+    <h3>Presione el boton para volver al inicio de sesión</h3>
+    <br>
+    <div class="ion-text-center">
+      <ion-button [routerLink]="['/login']">Volver</ion-button>
+    </div>
+  </ion-card-content>
+</ion-card>
+</ion-content>
