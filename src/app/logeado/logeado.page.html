@@ -1,37 +1,16 @@
 <ion-toolbar>
   <ion-buttons slot="start">
-    <ion-back-button [routerLink]="['/login']" default-href="#"></ion-back-button>
+    <ion-back-button [routerLink]="['/home-logeado']" default-href="#"></ion-back-button>
   </ion-buttons>
-  <ion-title>Perfil de Usuario</ion-title>
 </ion-toolbar>
+
 
 <ion-content class="ion-padding">
   <div class="ion-text-center">
-    <h1>Ingrese Informacion Adicional</h1>
+    <h1>Bienvenido denuevo!!</h1>
+    <br>
+    <p>Haga click aqui para editar su perfil</p>
+    <ion-button expand="round" routerLink="/home-logeado">Continuar</ion-button>
   </div>
+</ion-content>
 
-<ion-item>
-  <ion-label position="floating">Nombre</ion-label>
-  <ion-input [(ngModel)]="firstName"></ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label position="floating">Apellido</ion-label>
-  <ion-input [(ngModel)]="lastName"></ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label position="floating">Nivel educacional</ion-label>
-  <ion-input [(ngModel)]="educationLevel"></ion-input>
-</ion-item>
-
-<ion-item>
-  <ion-label position="floating">Fecha de nacimiento</ion-label>
-  <br>
-  <ion-datetime displayFormat="DD/MM/YYYY" [(ngModel)]="birthDate"></ion-datetime>
-</ion-item>
-
-<div class="ion-text-center ion-margin-top">
-  <ion-button expand="full" color="light" (click)="clearFields()">Limpiar</ion-button>
-  <ion-button expand="full" (click)="presentAlert()">Mostrar</ion-button>
-</div>

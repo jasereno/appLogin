@@ -1,53 +1,43 @@
-import { Component, OnInit } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  Validators,
-  FormBuilder
-} from '@angular/forms';
-import { AlertController, NavController } from '@ionic/angular';
 
+import { Router } from '@angular/router';
+import { NavController } from '@ionic/angular';
+import { Component, AfterViewInit } from '@angular/core';
+import { Animation, createAnimation } from '@ionic/core';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage implements OnInit {
+export class LoginPage {
+  username: string = '';
+  password: string = '';
 
-  formularioLogin: FormGroup;
+  constructor(private router: Router) { }
 
-  constructor(public fb: FormBuilder,
-    public alertController: AlertController,
-    public navCtrl: NavController) {
 
-    this.formularioLogin = this.fb.group({
-      'nombre': new FormControl("", Validators.required),
-      'password': new FormControl("", Validators.required)
-    })
 
+  login() {
+    // Aquí puedes realizar la autenticación real, en este ejemplo solo verificamos los valores estáticos
+    if (this.username === 'usuario123' && this.password === 'contraseña') {
+      this.router.navigate(['/logeado']); // Cambia 'home' por la ruta de tu página principal
+    } else {
+      this.router.navigate(['/no-logeado']);
+    }
   }
 
-  ngOnInit() {
+
+  moverInput() {
+    const inputElement = document.querySelector('ion-input') as HTMLElement;
+    const inputElement2 = document.querySelector('.ion-input') as HTMLElement;
+    const animation = createAnimation()
+      .addElement(inputElement)
+      .addElement(inputElement2)
+      .duration(2500)
+      .iterations(1)
+      .fromTo('transform', 'translateX(-20px)', 'translateX(300px)')
+      .fromTo('opacity', '1', '0.0');
+    animation.play();
+    username:  '';
+    password:  '';
   }
-
-  /*  async ingresar() {
-     var f = this.formularioLogin.value;
-   
-     var usuario = JSON.parse(localStorage.getItem('usuario'));
-   
-     if (usuario && usuario.nombre == f.nombre && usuario.password == f.password) {
-       console.log('Ingresado');
-       localStorage.setItem('ingresado', 'true');
-       this.navCtrl.navigateRoot('inicio');
-     } else {
-       const alert = await this.alertController.create({
-         header: 'Datos incorrectos',
-         message: 'Los datos que ingresaste son incorrectos.',
-         buttons: ['Aceptar']
-       });
-   
-       await alert.present();
-     }
-   } */
-
 }

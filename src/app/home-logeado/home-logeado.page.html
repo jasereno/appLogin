@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="['/login']" default-href="#" text="Back" ></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil de Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+<br>
+<br>
+<br>
+<br>
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label>Nombre de usuario: Usuario123</ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [(ngModel)]="firstName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Apellido</ion-label>
+    <ion-input [(ngModel)]="lastName"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nivel educacional</ion-label>
+    <ion-input [(ngModel)]="educationLevel"></ion-input>
+  </ion-item>
+  <br>
+  <br>
+  <ion-item >
+    <ion-button size="small" (click)="openDatePicker()">Fecha de nacimiento</ion-button>
+  </ion-item>
+  <br>
+  <br>
+  <div class="ion-text-center ion-margin-top">
+    <ion-button expand="full" color="light" (click)="clearFields()">Limpiar</ion-button>
+    <ion-button expand="full" color="secondary" (click)="presentAlert()">Guardar</ion-button>
+  </div>
+</ion-content>
