@@ -1,27 +1,42 @@
 
 import { Router } from '@angular/router';
 import { NavController } from '@ionic/angular';
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, AfterViewInit, OnInit } from '@angular/core';
 import { Animation, createAnimation } from '@ionic/core';
+import { HelperService } from 'src/app/services/helper.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
-export class LoginPage {
+export class LoginPage implements OnInit {
+
   username: string = '';
   password: string = '';
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private helper: HelperService) { }
+ 
+  ngOnInit() {
+  
+    
+  }
 
-
-
-  login() {
-    // Aquí puedes realizar la autenticación real, en este ejemplo solo verificamos los valores estáticos
-    if (this.username === 'usuario123' && this.password === 'contraseña') {
-      this.router.navigate(['/logeado']); // Cambia 'home' por la ruta de tu página principal
+  onLogin() {
+    if (this.username == "") {
+      //alert("Debe ingresar un usuario");
+      this.helper.showAlert("Debe ingresar un usuario ", "Error");
+      return;
+    }
+    if (this.password == "") {
+      this.helper.showAlert("Debe ingresar una contraseña ","Error");
+      return;
+      
+    }
+    if (this.username == "admin" && this.password == "1234") {
+      //alert("Login correcto");
+      this.router.navigate(['/logeado']);
     } else {
-      this.router.navigate(['/no-logeado']);
+      this.helper.showAlert("Usuario o contraseña incorrecta.","Error")
     }
   }
 
@@ -37,7 +52,9 @@ export class LoginPage {
       .fromTo('transform', 'translateX(-20px)', 'translateX(300px)')
       .fromTo('opacity', '1', '0.0');
     animation.play();
-    username:  '';
-    password:  '';
+    username: '';
+    password: '';
   }
+
+
 }

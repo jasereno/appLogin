@@ -10,9 +10,6 @@ const routes: Routes = [
     loadChildren: () => import('./logeado/logeado.module').then( m => m.LogeadoPageModule)
   },
   {
-    path: 'no-logeado',
-    loadChildren: () => import('./no-logeado/no-logeado.module').then( m => m.NoLogeadoPageModule)
-  },  {
     path: 'home-logeado',
     loadChildren: () => import('./home-logeado/home-logeado.module').then( m => m.HomeLogeadoPageModule)
   },
